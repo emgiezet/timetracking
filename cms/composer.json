@@ -27,10 +27,13 @@
         "sonata-project/admin-bundle": "dev-master",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
+        "sonata-project/easy-extends-bundle": "dev-master",
+        "sonata-project/user-bundle": "dev-master",
         "mockery/mockery": ">=0.7.2",
         "stof/doctrine-extensions-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "doctrine/doctrine-migrations-bundle":  "dev-master"
+        "doctrine/doctrine-migrations-bundle":  "dev-master",
+        "friendsofsymfony/user-bundle": "*"
     },
     "scripts": {
         "post-install-cmd": [

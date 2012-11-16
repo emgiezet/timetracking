@@ -4,7 +4,7 @@ app_frontend:
 
 app_backend:
     resource: "@AppBackendBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 sonata_page_cache:
     resource: '@SonataCacheBundle/Resources/config/routing/cache.xml'
@@ -18,8 +18,12 @@ _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
+    
+sonata_user:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
+
+app_backend_homepage:
+    pattern:  /admin
+    defaults: { _controller: SonataUserBundle:AdminSecurity:login }
         
-# Internal routing configuration to handle ESI
-#_internal:
-#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#    prefix:   /_internal

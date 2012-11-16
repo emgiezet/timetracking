@@ -1,0 +1,16 @@
+admin_user:
+    email: "admin@admin.com"
+    username: "admin@admin.com"
+    plain_password: admin
+    enabled: 1
+    groups:
+        - GROUP_SUPER_ADMIN 
+    
+user:
+    email: "user@admin.com"
+    username: "user@admin.com"
+    plain_password: admin
+    enabled: 1
+    groups:
+        - GROUP_USER 
+    

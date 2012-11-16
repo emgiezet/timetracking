@@ -1,3 +1,0 @@
-app_backend_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: AppBackendBundle:Default:index }

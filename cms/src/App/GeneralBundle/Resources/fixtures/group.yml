@@ -1,0 +1,9 @@
+GROUP_SUPER_ADMIN:
+    name: "Administrator"
+    roles:
+        - ROLE_SUPER_ADMIN
+    
+GROUP_USER:
+    name: "User"
+    roles:
+        - ROLE_USER
