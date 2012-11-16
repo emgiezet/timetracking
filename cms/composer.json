@@ -1,6 +1,6 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "name": "symfony2",
+    "description": "Symfony 2 Project",
     "autoload": {
         "psr-0": { "": "src/" }
     },
@@ -26,7 +26,11 @@
         "sonata-project/exporter": "dev-master",
         "sonata-project/admin-bundle": "dev-master",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
-        "sonata-project/intl-bundle": "dev-master"
+        "sonata-project/intl-bundle": "dev-master",
+        "mockery/mockery": ">=0.7.2",
+        "stof/doctrine-extensions-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "doctrine/doctrine-migrations-bundle":  "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -42,8 +46,10 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
     },
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
-        "symfony-web-dir": "web"
+        "symfony-web-dir": "web",
+        "symfony-assets-install": "symlink"
     }
 }
