@@ -11,6 +11,7 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
+        ROLE_USER:        ROLE_SONATA_ADMIN
         ROLE_ADMIN:       ROLE_USER
 
     firewalls:
