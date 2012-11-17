@@ -62,7 +62,7 @@
     <body class="sonata-bc {% if _side_menu is empty %}sonata-ba-no-side-menu{% endif %}">
         {# initialize block value #}
         <div id="wrap">
-        <div class="navbar navbar-static-top">
+        <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -72,8 +72,25 @@
                     </a>
 
                     {% if admin_pool is defined %}
-                        <div class="navbar-text pull-right">{% include admin_pool.getTemplate('user_block') %}</div>
-
+                        
+                        {% if app.user %}
+                        <div class="btn-group pull-right">
+                            <a href="#" data-toggle="dropdown" class="btn dropdown-toggle">
+        						<i class="icon-user"></i><span class="hidden-phone"> {{ app.user.name }}</span>
+        						<span class="caret"></span>
+        					</a>
+        					<ul class="dropdown-menu">
+        						<li><a href="#">{{ 'user_block_profile'|trans({}, 'SonataUserBundle') }}</a></li>
+        						<li class="divider"></li>
+        						{% if is_granted('ROLE_PREVIOUS_ADMIN') and sonata_user.impersonating %}
+                                <li><a href="{{ url(sonata_user.impersonating.route, sonata_user.impersonating.parameters| merge({'_switch_user': '_exit'})) }}">(exit)</a></li>
+                                <li class="divider"></li>
+                                {% endif %}
+        						<li><a href="{{ url('sonata_user_admin_security_logout') }}">{{ 'user_block_logout'|trans({}, 'SonataUserBundle') }}</a></li>
+        					</ul>
+				        </div>
+                        {% endif %}
+                       
                         {% block logo %}
                             <a href="{{ url('sonata_admin_dashboard') }}" class="brand">
                                 <img src="{{ asset(admin_pool.titlelogo) }}"  alt="{{ admin_pool.title }}" />
@@ -135,6 +152,7 @@
                     {% for flash in app.session.flashbag.get(session_var) %}
                         <div class="alert {{ 'alert-' ~ notice_level }}">
                             {{ flash|trans([], 'SonataAdminBundle') }}
+                            <button data-dismiss="alert" class="close" type="button">×</button>
                         </div>
                     {% endfor %}
                 {% endfor %}
@@ -198,6 +216,11 @@
                 {% endblock %}
                 </div>
 
+                
+                
+        
+                
+                
 
             </div>
 

@@ -22,4 +22,9 @@ class Group extends BaseGroup
      * @ORM\generatedValue(strategy="AUTO")
      */
      protected $id;
+     
+     public function __toString()
+     {
+         return $this->name;
+     }
 }

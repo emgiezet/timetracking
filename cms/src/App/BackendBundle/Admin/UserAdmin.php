@@ -11,6 +11,8 @@ use Sonata\AdminBundle\Admin\Admin;
 class UserAdmin extends Admin
 {
     
+    protected $baseRoutePattern = 'users';
+    
     protected function configureShowField(ShowMapper $showMapper)
     {
         $showMapper->add("email");
@@ -20,7 +22,13 @@ class UserAdmin extends Admin
     {
         $formMapper
             ->with('General')
-            ->add("email")
+                ->add("firstname")
+                ->add("lastname")
+                ->add("email")
+            ->end()
+            ->with('Permissions')
+                ->add("enabled", null, array("required" => false, "label" => "Active"))
+                ->add("groups", null, array("expanded" => false, "multiple" => true, "property" => "name"))
             ->end()
         ;
     }
@@ -28,7 +36,10 @@ class UserAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->addIdentifier("name")
             ->add("email")
+            ->add("groups", null, array("label" => "Roles"))
+            ->add("enabled", null, array("label" => "Status", "template" => "AppBackendBundle:CRUD:list_status.html.twig"))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array(),
@@ -40,7 +51,9 @@ class UserAdmin extends Admin
     
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add("email");
+        $datagridMapper
+            ->add("email")
+            ->add("enabled");
     }
     
 }
