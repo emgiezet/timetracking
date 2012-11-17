@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -76,19 +76,19 @@ sonata_admin:
     title_logo: /bundles/sonataadmin/logo_title.png
     templates:
         # default global templates
-        layout:  AppBackendBundle::standard_layout.html.twig
-        ajax:    SonataAdminBundle::ajax_layout.html.twig
+        layout:    AppBackendBundle::standard_layout.html.twig
+        ajax:      SonataAdminBundle::ajax_layout.html.twig
         dashboard: SonataAdminBundle:Core:dashboard.html.twig
 
         # default actions templates, should extend a global templates
         list:    AppBackendBundle:CRUD:list.html.twig
         show:    SonataAdminBundle:CRUD:show.html.twig
-        edit:    SonataAdminBundle:CRUD:edit.html.twig
+        edit:    AppBackendBundle:CRUD:edit.html.twig
 
     dashboard:
         blocks:
             # display a dashboard block
-            - { position: left, type: sonata.admin.block.admin_list }
+        #    - { position: left, type: sonata.admin.block.admin_list }
 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration

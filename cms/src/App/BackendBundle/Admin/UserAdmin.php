@@ -41,10 +41,11 @@ class UserAdmin extends Admin
             ->add("groups", null, array("label" => "Roles"))
             ->add("enabled", null, array("label" => "Status", "template" => "AppBackendBundle:CRUD:list_status.html.twig"))
             ->add('_action', 'actions', array(
+                'label' => 'Actions',    
                 'actions' => array(
-                    'view' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
+                    'view' => array('template' => 'AppBackendBundle:CRUD:list__action_view.html.twig'),
+                    'edit' => array('template' => 'AppBackendBundle:CRUD:list__action_edit.html.twig'),
+                    'delete' => array('template' => 'AppBackendBundle:CRUD:list__action_delete.html.twig'),
                 )
         ));
     }
