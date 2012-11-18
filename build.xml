@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<project name="Content maganement system" default="help" basedir=".">
+ 
+    <target name="help" description="Displays help">
+        <echo>
+Build targets:
+  
+  ############################ TASKS ######################################
+  
+  build.db                  - builds datatabse (drop, create, load fixtures)
+                              for given environment. Defualt env=prod.
+            
+  cc                        - clears all cache          
+            
+  ############################ TESTING TASKS ##############################
+  
+  phpunit                   - executes phpunit tests.
+                                             
+                                      
+        </echo>
+    </target>
+
+    <import file="cms/build.xml" />
+</project>

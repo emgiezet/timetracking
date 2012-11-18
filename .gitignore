@@ -7,6 +7,8 @@ cms/app/logs/*
 cms/app/cache/*
 cms/web/uploads/*
 cms/web/bundles/*
+cms/web/css/*
+cms/web/js/*
 
 # Configuration files
 cms/app/config/parameters.ini

@@ -2,7 +2,7 @@
 
 {% block actions %}
     <div class="sonata-actions">
-        {% include 'SonataAdminBundle:Core:create_button.html.twig' %}
+        {% include 'AppBackendBundle:CRUD:create_button.html.twig' %}
     </div>
 {% endblock %}
 
@@ -12,11 +12,9 @@
     {% set batchactions = admin.batchactions %}
     {% if admin.datagrid.results|length > 0 %}
         <div class="box">
-        <div class="box-header well">
-        &nbsp;
-        </div>
+        <div class="box-header well">&nbsp;</div>
         <div class="box-content">
-        <form action="{{ admin.generateUrl('batch', admin.filterParameters) }}" method="POST" >
+        <form action="{{ admin.generateUrl('batch', admin.filterParameters) }}" method="POST" style="margin-bottom: 0px;">
             <table class="table table-bordered table-striped">
                 {% block table_header %}
                     <thead>
@@ -64,8 +62,8 @@
                 {% block table_footer %}
                     <tr>
                         <th colspan="{{ admin.list.elements|length - 1 }}">
-                            {{ admin.datagrid.pager.page }} / {{ admin.datagrid.pager.lastpage }}
-                            {% if admin.isGranted("EXPORT") and admin.getExportFormats()|length %}
+                            {% trans %}Page{% endtrans %} {{ admin.datagrid.pager.page }} {% trans %}of{% endtrans %} {{ admin.datagrid.pager.lastpage }} 
+                            {% if admin.isGranted("EXPORT") and admin.getExportFormats()|length and 1==0 %}
                                 -
                                 {{ "label_export_download"|trans({}, "SonataAdminBundle") }}
                                 {% for format in admin.getExportFormats() %}
@@ -75,7 +73,7 @@
                         </th>
 
                         <th>
-                            {% transchoice admin.datagrid.pager.nbresults with {'%count%': admin.datagrid.pager.nbresults} from 'SonataAdminBundle' %}list_results_count{% endtranschoice %}
+                            {% trans %}Total{% endtrans %} {% transchoice admin.datagrid.pager.nbresults with {'%count%': admin.datagrid.pager.nbresults} from 'SonataAdminBundle' %}list_results_count{% endtranschoice %}
                         </th>
                     </tr>
 
@@ -137,13 +135,13 @@
 
                     <div class="actions sonata-ba-list-actions">
                         {% block batch_actions %}
-                            <select name="action">
+                            <select name="action" style="margin-top: 0px; margin-bottom: 0px;">
                                 {% for action, options in batchactions %}
                                     <option value="{{ action }}">{{ options.label }}</option>
                                 {% endfor %}
                             </select>
 
-                            <label class="checkbox">
+                            <label class="checkbox" style="display: none;">
                                 <input type="checkbox" name="all_elements"/>
                                 {{ 'all_elements'|trans({}, 'SonataAdminBundle') }}
                             </label>
@@ -166,7 +164,7 @@
 {% block list_filters %}
     {% if admin.datagrid.filters %}
         <div class="box">
-            <div class="box-header well">
+            <div class="box-header well show_filters" style="cursor: pointer;">
             <div class="box-icon">
 				<a class="btn btn-minimize btn-round" href="#">
 				<i class="icon-chevron-{{ admin.datagrid.hasActiveFilters ? 'up' : 'down' }}"></i>
@@ -174,13 +172,12 @@
 			</div>
             <h2>{{ 'label_filters'|trans({}, 'SonataAdminBundle') }}</h2>
             </div>
+        <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">    
         <div class="box-content">
-        <form class="sonata-filter-form {{ admin.isChild and 1 == admin.datagrid.filters|length ? 'hide' : '' }}" action="{{ admin.generateUrl('list') }}" method="GET">
-            <fieldset class="filter_legend">
-                <legend class="filter_legend {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">{{ 'label_filters'|trans({}, 'SonataAdminBundle') }}</legend>
-
-                <div class="filter_container {{ admin.datagrid.hasActiveFilters ? 'active' : 'inactive' }}">
-                    <table class="table table-bordered">
+        <form class="sonata-filter-form {{ admin.isChild and 1 == admin.datagrid.filters|length ? 'hide' : '' }}" action="{{ admin.generateUrl('list') }}" method="GET" style="margin-bottom: 0px;">
+            <fieldset class="filter_legend" style="border: none;">
+                
+                    <table class="table table-bordered" style="margin-top: 0px; width: 100%">
                         {% for filter in admin.datagrid.filters %}
                         <tr id="filter_{{ filter.name }}_row" class="filter {{ filter.isActive ? 'active' : 'inactive' }}">
                                 <td class="filter-title">{{ admin.trans(filter.label) }}</td>
@@ -199,10 +196,11 @@
 
                     <a class="btn" href="{{ admin.generateUrl('list', {filters: 'reset'}) }}">{{ 'link_reset_filter'|trans({}, 'SonataAdminBundle') }}</a>
 
-                </div>
+                
             </fieldset>
 
         </form>
+        </div>
         </div></div>
     {% endif %}
 {% endblock %}

@@ -3,7 +3,8 @@ services:
    backend.user_admin:
       class: App\BackendBundle\Admin\UserAdmin
       tags:
-        - { name: sonata.admin, manager_type: orm, group: Users, label: Users }
+        - { name: sonata.admin, manager_type: orm, group: Users, label: User list }
       arguments: [null, App\GeneralBundle\Entity\User, AppBackendBundle:UserAdmin]
       calls:
         - [ setTranslationDomain, ["user"] ]
+        - [ setUserManager, [@fos_user.user_manager] ]

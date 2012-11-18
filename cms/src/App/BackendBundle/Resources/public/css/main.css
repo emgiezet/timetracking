@@ -38,17 +38,20 @@ body.login-page {
 .page-header h1 {
     font-size: 25px;
 }
-
+.page-header {
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
 .box{
-border: 1px solid #DEDEDE;
-border-radius:3px;
--webkit-border-radius:3px;
--moz-border-radius:3px;
-margin-top: 10px; 
-margin-bottom: 10px ;
-box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
--webkit-box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
--moz-box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
+    border: 1px solid #DEDEDE;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    margin-top: 10px; 
+    margin-bottom: 10px ;
+    box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
+    -webkit-box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
+    -moz-box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
 }
 
 .box-header{
@@ -82,29 +85,29 @@ box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
     margin-top: 0px;
 }
 .box-header h3{
-font-size:13px;
-width:auto;
-clear:none;
-float:left;
-line-height:25px;
+    font-size:13px;
+    width:auto;
+    clear:none;
+    float:left;
+    line-height:25px;
 }
 .box-header h2 > i{
-margin-top:1px;
+    margin-top:1px;
 }
 .box-icon{
-float:right;
+    float:right;
 }
 .box-icon a{
-clear:none;
-float:left;
-margin:0 2px;
-height: 18px;
-width:5px;
-margin-top: -1px;
+    clear:none;
+    float:left;
+    margin:0 2px;
+    height: 18px;
+    width:5px;
+    margin-top: -1px;
 }
 .box-icon a i{
-margin-left:-4.5px;
+    margin-left:-4.5px;
 }
 .box-content{
-padding:10px;
+    padding:10px;
 }

@@ -9,6 +9,8 @@ Lastname: Nazwisko
 Active: Aktywny
 Groups: Grupy
 "User List": Lista użytkowników
-Enabed: Status
+Enabled: Aktywny
 User Create: Dodaj użytkownika
+User Edit: Edycja użytkownika
+User Show: Podgląd danych użytkownika
 

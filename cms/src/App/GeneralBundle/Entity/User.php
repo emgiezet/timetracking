@@ -6,12 +6,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
 use FOS\UserBundle\Model\GroupInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * App\GeneralBundle\Entity\User
  * 
  * @ORM\Table(name="user")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\GeneralBundle\Entity\UserRepository")
+ * @UniqueEntity(fields={"email"})
+ * @UniqueEntity(fields={"username"})
  */
 class User extends BaseUser
 {
@@ -29,6 +33,7 @@ class User extends BaseUser
      * @var string $firstname
      * 
      * @ORM\Column(name="firstname", type="string", length=50, nullable=false)
+     * @Assert\NotBlank()
      */
     protected $firstname;
     
@@ -36,6 +41,7 @@ class User extends BaseUser
      * @var string $lastname
      *
      * @ORM\Column(name="lastname", type="string", length=50, nullable=false)
+     * @Assert\NotBlank()
      */
     protected $lastname;
     
@@ -58,6 +64,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->groups = new ArrayCollection();
+        $this->enabled = true;
     }
 
     /**
